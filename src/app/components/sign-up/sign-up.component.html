@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="left-content">
+    <div class="left-content-inner">
+      <h1>Welcome to our community</h1>
+      <p>
+        Fuse helps developers to build organized and well coded dashboards full
+        of beautiful and rich modules. Join us and start building your
+        application today.
+      </p>
+    </div>
+  </div>
+  <div class="right-content">
+    <img src="assets/logo.png" alt="logo" width="50px" height="50px">
+    <h1 style="padding: 20px 0 0 0; margin: 0;">Sign Up</h1>
+    <p>Already have an account? <a routerLink="/signin">Sign in</a></p>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="user_firstname" />
+        <mat-error *ngIf="signupForm.get('user_firstname')?.hasError('required')">First Name is Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="user_lastname" />
+        <mat-error *ngIf="signupForm.get('user_lastname')?.hasError('required')">Last Name is Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="user_email" type="email"/>
+        <mat-error *ngIf="signupForm.get('user_email')?.hasError('required')">Email is Required</mat-error>
+        <mat-error *ngIf="signupForm.get('user_email')?.hasError('email')">Invalid Email Address</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="user_phone" />
+        <mat-error *ngIf="signupForm.get('user_phone')?.hasError('required')">Phone Number is Required</mat-error>
+        <mat-error *ngIf="signupForm.get('user_phone')?.hasError('minlength') || signupForm.get('user_phone')?.hasError('maxlength')">Phone Number must be 10 digits</mat-error>
+      </mat-form-field>
+      
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="user_password" type="{{ hidePassword ? 'password' : 'text' }}"/>
+        <button mat-icon-button type="button" matSuffix (click)="hidePassword = !hidePassword;">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="signupForm.get('user_password')?.hasError('required')">Password is Required</mat-error>
+        <mat-error *ngIf="signupForm.get('user_password')?.hasError('minlength')">Phone Number must be atleast 6 digits</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="user_city" />
+        <mat-error *ngIf="signupForm.get('user_city')?.hasError('required')">City is Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Zip Code</mat-label>
+        <input matInput formControlName="user_zipcode" />
+        <mat-error *ngIf="signupForm.get('user_zipcode')?.hasError('required')">Zip Code is Required</mat-error>
+        <mat-error *ngIf="signupForm.get('user_zipcode')?.hasError('minlength') || signupForm.get('user_zipcode')?.hasError('maxlength')">Zip Code must be 6 digits</mat-error>
+      </mat-form-field>
+
+      <div class="full-width terms-and-privacy-policy">
+        <div>
+            <mat-checkbox>I agree for <a href="">Terms of Service</a> and <a href="">Privacy Policy</a></mat-checkbox>
+        </div>
+      </div>
+
+      <button mat-raised-button color="primary" class="full-width">Sign up</button>
+    </form>
+  </div>
+</div>

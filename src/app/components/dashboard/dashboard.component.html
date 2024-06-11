@@ -1,0 +1,21 @@
+<div class="profile-container">
+    <mat-card class="profile-card">
+        <mat-card-header class="profile-header">
+            <mat-card-title>Profile</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="profile-image">
+                <img src="assets/profile-icon.png" alt="profile-icon" width="150px" height="150px">
+            </div>
+            <ul class="profile-details" *ngFor="let user of userDataObj">
+                <li><span>First Name:</span> {{ user.user_firstname }}</li>
+                <li><span>Last Name:</span> {{ user.user_lastname }}</li>
+                <li><span>Email:</span> {{ user.user_email }}</li>
+                <li><span>Phone:</span> {{ user.user_phone }}</li>
+                <li><span>City:</span> {{ user.user_city }}</li>
+                <li><span>Zip Code:</span> {{ user.user_zipcode }}</li>
+            </ul>
+        </mat-card-content>
+    </mat-card>
+</div>

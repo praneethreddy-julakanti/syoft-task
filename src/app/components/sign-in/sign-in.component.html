@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="left-content">
+    <div class="left-content-inner">
+      <h1>Welcome to our community</h1>
+      <p>
+        Fuse helps developers to build organized and well coded dashboards full
+        of beautiful and rich modules. Join us and start building your
+        application today.
+      </p>
+    </div>
+  </div>
+  <div class="right-content">
+    <img src="assets/logo.png" alt="logo" height="50px" width="50px">
+    <h1 style="padding: 20px 0 0 0; margin: 0;">Sign in</h1>
+    <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="user_email" />
+        <mat-error *ngIf="signinForm.get('user_email')?.hasError('required')">Email is Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="user_password" type="{{ hidePassword ? 'password' : 'text' }}"/>
+        <button mat-icon-button type="button" matSuffix (click)="hidePassword = !hidePassword;">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="signinForm.get('user_password')?.hasError('required')">Password is Required</mat-error>
+      </mat-form-field>
+
+      <div class="full-width check-and-forget">
+        <div>
+            <mat-checkbox>Remember Me</mat-checkbox>
+        </div>
+        <div class="forgot">
+            <a href="">Forgot Password?</a>
+        </div>
+      </div>
+
+      <button mat-raised-button color="primary" class="full-width">Sign in</button>
+
+      <div class="continue-text full-width">
+        <p>Or continue with</p>
+      </div>
+      <div class="continue-buttons">
+        <button mat-icon-button>
+          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+        </button>
+        <button mat-icon-button>
+          <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+        </button>
+        <button mat-icon-button>
+          <fa-icon [icon]="['fab', 'github']"></fa-icon> 
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
